@@ -61,7 +61,7 @@ Once the backend is created, navigate into the new folder.
 > folder, then run the following to remove the `.git` file:
 >
 > ```
-> rm -rf .git
+> rm -rf .git 
 > ```
 
 Within this new Rails
