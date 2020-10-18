@@ -11,7 +11,8 @@ class PokemonsController < ApplicationController
     end 
 
     def create
-        trainer = Trainer.find_by(params[:trainer_id])
+        # byebug
+        trainer = Trainer.find(params[:trainer_id])
         pokemon = trainer.pokemons.build({
             nickname: Faker::Name.first_name,
             species: Faker::Games::Pokemon.name

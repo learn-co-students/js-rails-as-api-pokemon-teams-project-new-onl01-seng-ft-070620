@@ -55,7 +55,7 @@ const createPokemon = (e) => {
 
   const configObj = {
     method: "POST",
-    header: {
+    headers: {
       "Content-Type": "application/json",
       "Accept": "application/json"
     },
@@ -79,7 +79,7 @@ const deletePokemon = (e) => {
 
   const configObj = {
     method: "DELETE",
-    header: {
+    headers: {
       "Content-Type": "application/json",
       "Accept": "application/json"
     },
