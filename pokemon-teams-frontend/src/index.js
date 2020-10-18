@@ -52,8 +52,6 @@ const renderPokemon = (pokemon) => {
 
 const createPokemon = (e) => {
   e.preventDefault()
-  console.log(e.target)
-  console.log(e.target.dataset.trainerId)
 
   const configObj = {
     method: "POST",
@@ -64,18 +62,28 @@ const createPokemon = (e) => {
     body: JSON.stringify({trainer_id: e.target.dataset.trainerId})
   }
   fetch(POKEMONS_URL, configObj)
-  .then(res => console.log(res)
-  // .then(json => {
-  //   console.log(json)
+  .then(res => res.json())
+  .then(json => {
+    console.log(json)
 
-  //   if (json.message){
-  //     alert(json.message)
-  //   } else {
-  //     renderPokemon(json)
-  //   }
-  // })
+    if (json.message){
+      alert(json.message)
+    } else {
+      renderPokemon(json)
+    }
+  })
 }
 
 const deletePokemon = (e) => {
   e.preventDefault()
+
+  const configObj = {
+    method: "DELETE",
+    header: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+  }
+  fetch(`${POKEMONS_URL}/${e.target.dataset.pokemonId}`, configObj)
+  e.target.parentElement.remove()
 }

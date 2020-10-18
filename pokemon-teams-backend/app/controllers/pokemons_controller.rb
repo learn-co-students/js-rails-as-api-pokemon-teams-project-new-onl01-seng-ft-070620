@@ -11,13 +11,11 @@ class PokemonsController < ApplicationController
     end 
 
     def create
-        trainer = Trainer.find(params[:trainer_id])
+        trainer = Trainer.find_by(params[:trainer_id])
         pokemon = trainer.pokemons.build({
             nickname: Faker::Name.first_name,
             species: Faker::Games::Pokemon.name
         })
-        # byebug
-
         render json: pokemon.save ? pokemon : {message: pokemon.errors.messages[:team_max][0]}
     end 
 
